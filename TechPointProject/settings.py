@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'TechPointProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '35.224.233.128',
+        'NAME': 'infoodbanks',
+        'USER': 'root',
+        'PASSWORD': 'Team1FB1845',
+
     }
 }
 
