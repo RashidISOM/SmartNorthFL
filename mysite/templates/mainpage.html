@@ -1,5 +1,14 @@
-<html>
+<!-- This imports the base.html for the naviagation bar-->
+{% extends 'base.html' %}
 
-<h1>This is the main page.</h1>
 
-</html>
+<!-- This is our html that is custom for this specific page-->
+{% block body %}
+    <h1>Product Name and Welcome</h1>
+
+    <h5>Who can use this?</h5>
+
+    <h5>Overview of solution for donors</h5>
+
+    <h5>Overview of solution for pantries</h5>
+{% endblock %}

@@ -1,0 +1,21 @@
+<!-- This imports the base.html for the naviagation bar-->
+{% extends 'base.html' %}
+
+
+<!-- This is our html that is custom for this specific page-->
+{% block body %}
+    <h1>Inventory</h1>
+    <br>
+    <h3>Add Items</h3>
+    <form>
+      <label for="itName">Item Name:</label>
+      <input type = "text" id="itName" name = "itName"><br>
+      <label for="num">Number of item:</label>
+      <input type = "number" id="num" name = "num"><br>
+      <label for="pounds">Pounds per item:</label>
+      <input type = "number" id="pounds" name = "pounds"><br>
+      <label for="expiration">Expiration date:</label>
+      <input type = "date" id="expiration" name = "expiration"><br>
+      <input type="submit" value="Submit">
+    </form>
+{% endblock %}

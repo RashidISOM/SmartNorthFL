@@ -1,0 +1,14 @@
+<!-- This imports the base.html for the naviagation bar-->
+{% extends 'base.html' %}
+
+
+<!-- This is our html that is custom for this specific page-->
+{% block body %}
+    <h1>Inventory</h1>
+    <a class="btn btn-outline-primary my-2 my-sm-0" href = "#">Send notification to donors</a>
+    </br></br></br>
+    <a class="btn btn-outline-primary my-2 my-sm-0" href = "add">Add items</a>
+    <a class="btn btn-outline-primary my-2 my-sm-0" href = "remove">Remove items</a>
+    <a class="btn btn-outline-primary my-2 my-sm-0" href = "#">import from excel</a>
+    <a class="btn btn-outline-primary my-2 my-sm-0" href = "#">export to excel</a>
+{% endblock %}

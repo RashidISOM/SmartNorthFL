@@ -1,0 +1,36 @@
+<!-- This imports the base.html for the naviagation bar-->
+{% extends 'base.html' %}
+
+
+<!-- This is our html that is custom for this specific page-->
+{% block body %}
+    <h1>Find a Pantry</h1>
+
+    <!-- form to be replaced with django form once model is implemented -->
+    <form>
+      <label for="zip">Enter Your Zip Code:</label>
+      <br>
+      <input type = "text" id="zip" name = "zip">
+    </form>
+<br>
+    <div class="container" style = "float: left;">
+      <div class="row justify-content-start" >
+        <div class="col"  style = "background-color: lightgrey;">
+          Clay Church Food Pantry<br>
+          17646 Cleveland Road, South Bend IN, 46635
+          ...
+          <br>
+          <a class="btn btn-outline-primary my-2 my-sm-0" href = "#">Sign Up For Notifications</a>
+
+        </div>
+      </div>
+      <br>
+      <div class="row" >
+        <div class="col" style = "background-color: lightgrey;">
+          Info on food panry #2
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}
