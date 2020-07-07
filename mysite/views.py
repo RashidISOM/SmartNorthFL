@@ -15,3 +15,6 @@ def add(request):
 
 def remove(request):
     return render(request, 'removeitemspage.html', {})
+
+##def login(request):
+  #  return render(request, 'register/login.html', {})
