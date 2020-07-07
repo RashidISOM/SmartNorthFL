@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Food
-# Register your models here.
-admin.site.register(Food)
+from mysite.models import Food
+@admin.register(Food)
+class ViewAdmin(admin.ModelAdmin):
+    pass
 
