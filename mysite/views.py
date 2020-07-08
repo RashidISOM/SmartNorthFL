@@ -16,5 +16,8 @@ def add(request):
 def remove(request):
     return render(request, 'removeitemspage.html', {})
 
+def index(request):
+    return render(request, 'index.html', {})
+
 ##def login(request):
   #  return render(request, 'register/login.html', {})
