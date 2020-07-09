@@ -7,15 +7,28 @@
     <h1>Inventory</h1>
     <br>
     <h3>Add Items</h3>
-    <form>
-      <label for="itName">Item Name:</label>
-      <input type = "text" id="itName" name = "itName"><br>
-      <label for="num">Number of item:</label>
-      <input type = "number" id="num" name = "num"><br>
-      <label for="pounds">Pounds per item:</label>
-      <input type = "number" id="pounds" name = "pounds"><br>
-      <label for="expiration">Expiration date:</label>
-      <input type = "date" id="expiration" name = "expiration"><br>
-      <input type="submit" value="Submit">
+
+    <div class = "containter">
+
+    <form method="POST">
+      <br>
+      {% csrf_token %}
+      {% for field in form %}
+
+      <div class = "form-group row">
+        <label for = "id_{{ field.name }}" class = "col-2 col-form-label"> {{ field.label }} </label>
+        <div class = "col-10">
+          {{ field }}
+        </div>
+
+      </div>
+
+      {% endfor %}
+
+      <button type = "submit" class ="btn btn-primary" name = "button"> Add Item </button>
+    
     </form>
+
+  </div>
+
 {% endblock %}
