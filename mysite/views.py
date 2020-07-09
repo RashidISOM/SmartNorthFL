@@ -49,6 +49,14 @@ def edit_food(request, pk):
         form = FoodForm(instance=item)
 
         return render(request, 'edit_item.html', {'form': form})
+    
+def delete_food(request,pk):
+    Food.objects.filter(id=pk).delete()
+    items = Food.objects.all()
+    context = {
+        'items':items
+    }
+    return render(request, 'inventorypage.html', context)
 
 ##def login(request):
   #  return render(request, 'register/login.html', {})
