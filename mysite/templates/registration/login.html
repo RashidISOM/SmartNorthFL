@@ -7,7 +7,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" style="background-color: #e3f2fd;"id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
@@ -20,16 +20,14 @@
             <a class="nav-link" href="../inventory">Update Inventory</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../about">About</a>
+            <a class="nav-link" "href="../about">About</a>
           </li>
         </ul>
-          <a class="btn btn-outline-primary my-2 my-sm-0" href = "login/">Login</a>
+          <a class="btn btn-outline-primary my-2 my-sm-0" style="background-color: #e3f2fd;"href = "/login">Login</a>
       </div>
-    </nav>
+  </nav>
 {% block body %}
 
-
-<!DOCTYPE html>
 
 <html>
 <style>
@@ -45,7 +43,7 @@ input[type=text], input[type=password] {
 
 input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: dodgerblue;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -55,15 +53,15 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #1176d9;
 }
 
 .regButton {
     display: block;
     width: 100%;
     background-color: #FFFFFF;
-    color: #4CAF50;
-    border-color: #4CAF50;
+    color: dodgerblue;
+    border-color: dodgerblue;
     padding: 14px 20px;
     margin: 4px 0;
     border-radius: 4px;
@@ -73,18 +71,17 @@ input[type=submit]:hover {
 }
 
 .regButton:hover {
-    background-color: #45a049;
+    background-color: #1176d9;
     text-decoration:none;
+    color: white;
 }
 
 div {
     border-radius: 5px;
     background-color: #f2f2f2;
-    padding: 20px;
 }
 </style>
 <body>
-
 <div>
   <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
@@ -100,7 +97,6 @@ div {
   </form>
   <a type="button" class="regButton" href="/register" style="text-align:center">Register</a>
 </div>
-
 </body>
 </html>
 {% endblock %}
