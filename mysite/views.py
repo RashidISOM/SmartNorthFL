@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Food
 from .forms import FoodForm
+from django.shortcuts import redirect, get_object_or_404, render
 
 # Create your views here.
 def mainpage(request):
