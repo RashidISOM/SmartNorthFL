@@ -3,7 +3,7 @@ from django.conf.urls import url
 from mysite import views
 from register import views as regView
 from django.contrib.auth.views import LoginView
-from .views import display_food
+from .views import *
 
 
 
@@ -17,4 +17,6 @@ urlpatterns = [
     path('add', views.add, name= 'add'),
     path('remove', views.remove, name= 'remove'),
     url (r'^display_food$', display_food, name = 'display_food'),
+    url (r'^add_food$', add_food, name = 'add_food'),
+    url (r'^edit_food$', edit_food, name = 'edit_food'),
 ]
