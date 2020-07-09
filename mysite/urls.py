@@ -1,8 +1,9 @@
 from django.urls import path
+from django.conf.urls import url
 from mysite import views
 from register import views as regView
 from django.contrib.auth.views import LoginView
-from .views import index
+from .views import display_food
 
 
 
@@ -16,4 +17,5 @@ urlpatterns = [
     path('add', views.add, name= 'add'),
     path('remove', views.remove, name= 'remove'),
     path('index', views.index, name='index' ),
+    url (r'^display_food$', display_food, name = 'display_food'),
 ]
