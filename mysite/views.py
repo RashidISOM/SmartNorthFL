@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Food
+from .forms import FoodForm
 
 # Create your views here.
 def mainpage(request):
