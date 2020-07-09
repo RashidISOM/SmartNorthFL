@@ -16,6 +16,5 @@ urlpatterns = [
     path('pantries', views.pantries, name= 'pantries'),
     path('add', views.add, name= 'add'),
     path('remove', views.remove, name= 'remove'),
-    path('index', views.index, name='index' ),
     url (r'^display_food$', display_food, name = 'display_food'),
 ]
