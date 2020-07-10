@@ -16,6 +16,6 @@ urlpatterns = [
     path('remove', views.remove, name= 'remove'),
     url (r'^display_food$', display_food, name = 'display_food'),
     url (r'^add_food$', add_food, name = 'add_food'),
-    url (r'^edit_food$', edit_food, name = 'edit_food'),
+    url (r'^edit_food/(?P<pk>\d+)$', edit_food, name = 'edit_food'),
     url (r'^delete_food/(?P<pk>\d+)$', delete_food, name = 'delete_food'),
 ]
