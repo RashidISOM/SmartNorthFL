@@ -7,18 +7,34 @@
     <h1>Find a Pantry</h1>
 
     <!-- form to be replaced with django form once model is implemented -->
-    <form>
-      <label for="zip">Enter Your Zip Code:</label>
+    <form method="get">
+      {{myFilter.form}}
       <br>
-      <input type = "text" id="zip" name = "zip">
+      <button class="btn btn-primary" type="submit">Search</button>
     </form>
 <br>
     <div class="container" style = "float: left;">
       <div class="row justify-content-start" >
         <div class="col"  style = "background-color: lightgrey;">
-          Clay Church Food Pantry<br>
-          17646 Cleveland Road, South Bend IN, 46635
-          ...
+      <!-- Credit to the following link for the table code
+https://stackoverflow.com/questions/7287027/displaying-a-table-in-django-from-database/7288237-->
+        <table>
+               <tr>
+            <th>Name</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip Code</th>
+        </tr>
+        {% for Pantry in listedPantries %}
+        <tr>
+        <td>{{ Pantry.name }}</td>
+        <td>{{ Pantry.city }}</td>
+        <td>{{ Pantry.state}}</td>
+        <td>{{Pantry.zipCode}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
           <br>
           <a class="btn btn-outline-primary my-2 my-sm-0" href = "#">Sign Up For Notifications</a>
 
