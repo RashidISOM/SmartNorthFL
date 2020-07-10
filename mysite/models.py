@@ -20,21 +20,22 @@ class Food(models.Model): #name of table
         return 'Name : {0} Status : {1}' .format(self.Name, self.Status)
 
 class Pantry(models.Model):
+
     name = models.CharField(max_length = 100)
-    #address = models.CharField(max_length = 250)
     zipCode = models.CharField(max_length = 50)
     streetAdd1 = models.CharField(max_length = 100)
-    streetAdd2 = models.CharField(max_length = 100)
-    city = models.CharField(max_length = 100)
-    state = models.CharField(max_length = 50)
+    streetAdd2 = models.CharField(max_length = 100, blank=True)
+    city = models.CharField(max_length = 50)
+    state = models.CharField(max_length = 2)
+
 
     #https://stackoverflow.com/questions/19130942/whats-the-best-way-to-store-phone-number-in-django-models
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True) # validators should be a list
 
-    description = models.CharField(max_length = 1000)
+    description = models.CharField(max_length = 1000, blank=True)
 
-    websiteURL = models.CharField(max_length = 1000)
+    websiteURL = models.CharField(max_length = 1000, blank=True)
 
 
     #users
@@ -88,3 +89,4 @@ class Donor(models.Model):
     pantry = models.ForeignKey(Pantry, on_delete = models.CASCADE)
     def __str__(self):
         return 'Name : {0}' .format(self.name)
+

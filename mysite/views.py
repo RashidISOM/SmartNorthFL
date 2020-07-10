@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Food
+from .models import Pantry
+from .forms import RegisterForm
+from .filter import PantryFilter
 
 # Create your views here.
 def mainpage(request):
@@ -9,7 +12,10 @@ def inventory(request):
     return render(request, 'inventorypage.html', {})
 
 def pantries(request):
-    return render(request, 'findpantrypage.html', {})
+    listedPantries = Pantry.objects.all()
+    myFilter = PantryFilter(request.GET, queryset=listedPantries)
+    listedPantries = myFilter.qs
+    return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'myFilter':myFilter})
 
 def add(request):
     return render(request, 'additemspage.html', {})
@@ -24,5 +30,14 @@ def display_food(request):
     }
     return render(request, 'inventorypage.html', context)
 
-##def login(request):
-  #  return render(request, 'register/login.html', {})
+
+def register(response):
+   if response.method == "POST":
+      form = RegisterForm(response.POST)
+      if form.is_valid():
+        form.save()
+      return redirect("/")
+   else:
+      form = RegisterForm()
+
+   return render(response, "register/register.html", {"form":form})
