@@ -18,19 +18,22 @@
         <div class="col"  style = "background-color: lightgrey;">
       <!-- Credit to the following link for the table code
 https://stackoverflow.com/questions/7287027/displaying-a-table-in-django-from-database/7288237-->
-        <table>
+        <table class="table table-hover">
+          <thead>
                <tr>
             <th>Name</th>
-          <th>City</th>
-          <th>State</th>
-          <th>Zip Code</th>
+            <th>Needs</th>
+          <th>Info</th>
+          <th>Website</th>
         </tr>
+        </thead>
         {% for Pantry in listedPantries %}
         <tr>
         <td>{{ Pantry.name }}</td>
-        <td>{{ Pantry.city }}</td>
-        <td>{{ Pantry.state}}</td>
-        <td>{{Pantry.zipCode}}</td>
+        <td></td>
+        <td><pre>{{ Pantry.city }}, {{ Pantry.state}} {{Pantry.zipCode}}
+{{Pantry.phone_number}}</pre></td>
+        <td>{{ Pantry.websiteURL }}</td>
         </tr>
       {% endfor %}
     </table>
