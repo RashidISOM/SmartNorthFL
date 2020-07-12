@@ -49,7 +49,7 @@ class Pantry(models.Model):
     #items in need of
     #food/inventory
     def __str__(self):
-        return 'Name : {0}' .format(self.name)
+        return '{0}' .format(self.name)
 
 class Hours(models.Model):
     DAYS = [
@@ -61,6 +61,15 @@ class Hours(models.Model):
       (6, ("Saturday")),
       (7, ("Sunday")),
     ]
+    dayNames = [
+        ("Monday"),
+        ("Tuesday"),
+        ("Wednesday"),
+        ("Thursday"),
+        ("Friday"),
+        ("Saturday"),
+        ("Sunday")
+    ]
     #https://stackoverflow.com/questions/12216771/django-objects-for-business-hours
     weekday = models.IntegerField(
         choices=DAYS,
@@ -69,13 +78,15 @@ class Hours(models.Model):
     from_hour = models.TimeField()
     to_hour = models.TimeField()
     pantry = models.ForeignKey(Pantry, on_delete = models.CASCADE)
+    def __str__(self):
+        return '{0}: From {1} - {2}' .format(self.dayNames[self.weekday], self.from_hour, self.to_hour)
 
 
 class Need(models.Model):
     itemName = models.CharField(max_length = 100)
     pantry = models.ForeignKey(Pantry, on_delete = models.CASCADE)
     def __str__(self):
-        return 'Name : {0}' .format(self.itemName)
+        return '{0}' .format(self.itemName)
 
 class Donor(models.Model):
     name = models.CharField(max_length = 100)
