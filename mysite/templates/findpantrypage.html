@@ -25,6 +25,7 @@ https://stackoverflow.com/questions/7287027/displaying-a-table-in-django-from-da
             <th>Needs</th>
           <th>Info</th>
           <th>Website</th>
+          <th>Distance</th>
         </tr>
         </thead>
         {% for Pantry in listedPantries %}
@@ -34,6 +35,7 @@ https://stackoverflow.com/questions/7287027/displaying-a-table-in-django-from-da
         <td><pre>{{ Pantry.city }}, {{ Pantry.state}} {{Pantry.zipCode}}
 {{Pantry.phone_number}}</pre></td>
         <td>{{ Pantry.websiteURL }}</td>
+        <td>{{ dist }}</td>
         </tr>
       {% endfor %}
     </table>

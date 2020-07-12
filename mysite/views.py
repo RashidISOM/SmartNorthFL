@@ -30,14 +30,14 @@ def pantries(request):
         for line in conversions:
           if re.search('^' + location.getZipCode() + '[,]+[^\n]*$', line):
             print(line)
-            line.split(",")
+            line = line.split(",")
             dist.append(calc_dist_fixed(39.876973, -86.467801, float(line[1].strip()), float(line[2].strip())))
             conversions.seek(0)
             break
     conversions.close()
     for j in dist:
       print(j)
-    return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'myFilter':myFilter})
+    return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'myFilter':myFilter, 'dist':dist})
 
 def add(request):
     return render(request, 'additemspage.html', {})
