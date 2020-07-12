@@ -13,62 +13,40 @@
       <button class="btn btn-primary" type="submit">Search</button>
     </form>
 <br>
-
-
-
-
-
-
-<div class="container" style = "float: left;">
-  {% for Pantry in listedPantries %}
-  <div class="row justify-content-start" >
-    <div class="col"  style = "background-color: lightgrey;"> 
-      <table>
-        <tr>
-          <td>{{ Pantry.name }}</td>
+    <div class="container" style = "float: left;">
+      <div class="row justify-content-start" >
+        <div class="col"  style = "background-color: lightgrey;">
+      <!-- Credit to the following link for the table code
+https://stackoverflow.com/questions/7287027/displaying-a-table-in-django-from-database/7288237-->
+        <table>
+               <tr>
+            <th>Name</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip Code</th>
         </tr>
+        {% for Pantry in listedPantries %}
         <tr>
-          <td>{{ Pantry.streetAdd1}}, {{ Pantry.city }}, {{ Pantry.state}} {{Pantry.zipCode}}</td>
+        <td>{{ Pantry.name }}</td>
+        <td>{{ Pantry.city }}</td>
+        <td>{{ Pantry.state}}</td>
+        <td>{{Pantry.zipCode}}</td>
         </tr>
-        <tr>
-          <td>
-            {{ Pantry.phone_number}}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {{ Pantry.websiteURL}}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {{ Pantry.description}}
-          </td>
-        </tr>
-        <tr>
-            <td>Needs:</td>
-            {% for need in Pantry.need_set.all %}
-              <tr><td>
-              {{need}}
-              </td></tr>
-            {% endfor %}
-        </tr>
-        <tr>
-          <td>
-            {% for hour in Pantry.hours_set.all %}
-              {{hour}}
-            {% endfor %}
-          </td>
-        </tr>
-      </table>
-      <a class="btn btn-outline-primary my-2 my-sm-0" href = "#">Sign Up For Notifications</a>
+      {% endfor %}
+    </table>
 
+          <br>
+          <a class="btn btn-outline-primary my-2 my-sm-0" href = "#">Sign Up For Notifications</a>
+
+        </div>
+      </div>
+      <br>
+      <div class="row" >
+        <div class="col" style = "background-color: lightgrey;">
+          Info on food panry #2
+        </div>
+      </div>
     </div>
-  </div>
-  <br>
-  {% endfor %}
-</div>
-
 
 
 {% endblock %}
