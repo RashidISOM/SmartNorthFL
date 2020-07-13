@@ -47,7 +47,7 @@ class Food(models.Model): #name of table
     Status = models.CharField(max_length=100, choices=choices, blank = False) #stable/excess/shortage?
     Amount = models.IntegerField(blank = True) #optional exact amount
 
-    pantry = models.ForeignKey(Pantry, on_delete = models.CASCADE)
+    Pantry = models.ForeignKey(Pantry, on_delete = models.CASCADE)
 
     def __str__(self):
         return 'Name : {0} Status : {1}' .format(self.Name, self.Status)
