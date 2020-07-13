@@ -1,9 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
+import re
+import sys
 from .models import Food
 from .models import Pantry
 from .forms import RegisterForm
-from .filter import PantryFilter
 from .forms import FoodForm
+from .forms import findPantry
+from .calc import calc_dist_fixed
 
 
 
@@ -15,10 +18,33 @@ def inventory(request):
     return render(request, 'inventorypage.html', {})
 
 def pantries(request):
+    form = findPantry()
     listedPantries = Pantry.objects.all()
-    myFilter = PantryFilter(request.GET, queryset=listedPantries)
-    listedPantries = myFilter.qs
-    return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'myFilter':myFilter})
+    if str(request).find('=') != -1:
+      userZip = str(request)
+      userZip = userZip[userZip.rfind('=')+1:-2]
+      with  open("zipCodes","r") as conversions:
+        for l in conversions:
+          if re.search('^' + userZip + '[,]+[^\n]*$', l):
+            print(l)
+            l = l.split(",")
+            userLat = float(l[1].strip())
+            userLon = float(l[2].strip())
+            print(userLat)
+            print(userLon)
+            break
+      with  open("zipCodes","r") as conversions:
+        for location in listedPantries:
+          for line in conversions:
+            if re.search('^' + location.getZipCode() + '[,]+[^\n]*$', line):
+              print(line)
+              line = line.split(",")
+              location.setDistance(round(calc_dist_fixed(userLat, userLon, float(line[1].strip()), float(line[2].strip())), 2))
+              conversions.seek(0)
+              break
+      conversions.close()
+      #listedPantries = listedPantries.order_by("distance")
+    return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'form':form})
 
 def add(request):
     return render(request, 'additemspage.html', {})

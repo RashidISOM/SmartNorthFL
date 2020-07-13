@@ -11,6 +11,7 @@ class Pantry(models.Model):
     streetAdd2 = models.CharField(max_length = 100, blank=True)
     city = models.CharField(max_length = 50)
     state = models.CharField(max_length = 2)
+    distance = models.IntegerField(blank=True)
 
 
     #https://stackoverflow.com/questions/19130942/whats-the-best-way-to-store-phone-number-in-django-models
@@ -34,6 +35,14 @@ class Pantry(models.Model):
     #food/inventory
     def __str__(self):
         return '{0}' .format(self.name)
+
+
+    def getZipCode(self):
+        return self.zipCode
+
+    def setDistance(self, a):
+        self.distance = a
+        return
 
 class Food(models.Model): #name of table
     Name = models.CharField(max_length=100, blank = False) #item name?
@@ -105,5 +114,9 @@ class Donor(models.Model):
     def __str__(self):
         return 'Name : {0}' .format(self.name)
 
+class Location(models.Model):
+    zipCode = models.IntegerField()
 
+    def __str__(self):
+      return zipCode
 

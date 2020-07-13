@@ -8,15 +8,23 @@
 
     <!-- form to be replaced with django form once model is implemented -->
     <form method="get">
-      {{myFilter.form}}
       <br>
+      {% csrf_token %}
+      {% for field in form %}
+
+      <div class = "form-group row">
+        <label for = "id_{{ field.name }}" class = "col-2 col-form-label"> Zip Code </label>
+        <div class = "col-2">
+          {{ field }}
+        </div>
+
+      </div>
+
+      {% endfor %}
+
       <button class="btn btn-primary" type="submit">Search</button>
     </form>
 <br>
-
-
-
-
 
 
 <div class="container" style = "float: left;">
@@ -29,6 +37,9 @@
         </tr>
         <tr>
           <td>{{ Pantry.streetAdd1}}, {{ Pantry.city }}, {{ Pantry.state}} {{Pantry.zipCode}}</td>
+         </tr>
+          <tr>
+            <td>{{Pantry.distance}} Miles</td>
         </tr>
         <tr>
           <td>
@@ -48,9 +59,9 @@
         <tr>
             <td>Needs:</td>
             {% for need in Pantry.need_set.all %}
-              <tr><td>
+              <tr><td style="color:red;">
               {{need}}
-              </td></tr>
+              <td/></tr>
             {% endfor %}
         </tr>
         <tr>
