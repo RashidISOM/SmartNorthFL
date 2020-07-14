@@ -62,8 +62,11 @@ class Food(models.Model): #name of table
         return 'Name : {0} Status : {1}' .format(self.Name, self.Status)
 
 
-
-
+class Mail(models.Model):
+    PantryName = models.CharField(max_length=100, blank=False)
+    Subject = models.CharField(max_length=100, blank=False)
+    Message = models.CharField(max_length=500, blank=False)
+    
 class Hours(models.Model):
     DAYS = [
         (1, ("Monday")),
