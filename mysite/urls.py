@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf.urls import url
 from mysite import views
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from .views import *
 
 
@@ -9,6 +9,7 @@ from .views import *
 urlpatterns = [
     path('', views.mainpage, name='mainpage'),
     path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
     path('register', views.register, name='register'),
     path('inventory', views.inventory, name='inventory'),
     path('pantries', views.pantries, name= 'pantries'),
