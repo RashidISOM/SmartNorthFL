@@ -8,6 +8,9 @@ from .forms import RegisterForm
 from .forms import FoodForm
 from .forms import findPantry
 from .calc import *
+from .forms import *
+from django.core.mail import send_mass_mail
+from django.http import HttpResponse
 
 
 
@@ -123,6 +126,27 @@ def delete_food(request,pk):
         'items':items
     }
     return render(request, 'inventorypage.html', context)
+
+def send_mail_form(request):
+        if request.method == "POST":
+            form = mailForm (request.POST)
+
+            if form.is_valid():
+                form.save()
+                return redirect('inventory')
+        else:
+            form = mailForm()
+            return render(request, 'send_mail.html', {'form': form})
+
+def send_mail(request):
+    
+    users = User.objects.filter(is_active=True).values_list('email', flat=True)
+
+    msg1 = ('subject 1', 'message 1', 'Techpointteam1nonprofit@gmail.com', users )
+    
+    send_mass_mail((msg1,))
+    
+    return render(request, 'inventorypage.html')
 
 ##def login(request):
   #  return render(request, 'register/login.html', {})

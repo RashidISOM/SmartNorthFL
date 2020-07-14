@@ -5,7 +5,7 @@
 <!-- This is our html that is custom for this specific page-->
 {% block body %}
     <h1>Inventory</h1>
-    <a class="btn btn-outline-primary my-2 my-sm-0" href = "#">Send notification to donors</a>
+    <a class="btn btn-outline-primary my-2 my-sm-0" href = "{% url 'send_mail_form' %}">Send notification to donors</a>
     </br></br></br>
     <a href=  "{% url 'add_food' %}" class="btn btn-outline-primary my-2 my-sm-0" href = "add">Add items</a>
     <a class="btn btn-outline-primary my-2 my-sm-0" href = "#">Import from excel</a>

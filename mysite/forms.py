@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Food, Location
+from .models import *
 
 
 class RegisterForm(UserCreationForm):
@@ -17,6 +17,11 @@ class FoodForm(forms.ModelForm):
     class Meta:
         model = Food
         fields = ('Name', 'Status', 'Amount', 'Pantry')
+        
+class mailForm(forms.ModelForm):
+    class Meta:
+        model = Mail 
+        fields = ('PantryName', 'Subject', 'Message')
 
 class findPantry(forms.ModelForm):
     class Meta:
