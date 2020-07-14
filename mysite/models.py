@@ -40,10 +40,6 @@ class Pantry(models.Model):
     def getZipCode(self):
         return self.zipCode
 
-    def setDistance(self, a):
-        self.distance = a
-        return
-
 class Food(models.Model): #name of table
     Name = models.CharField(max_length=100, blank = False) #item name?
 

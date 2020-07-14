@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 import re
 import sys
+from array import *
 from .models import Food
 from .models import Pantry
 from .forms import RegisterForm
 from .forms import FoodForm
 from .forms import findPantry
-from .calc import calc_dist_fixed
+from .calc import *
 
 
 
@@ -33,18 +34,38 @@ def pantries(request):
             print(userLat)
             print(userLon)
             break
+      i = 0
+      order = [[]]
       with  open("zipCodes","r") as conversions:
         for location in listedPantries:
           for line in conversions:
             if re.search('^' + location.getZipCode() + '[,]+[^\n]*$', line):
               print(line)
               line = line.split(",")
-              location.setDistance(round(calc_dist_fixed(userLat, userLon, float(line[1].strip()), float(line[2].strip())), 2))
+              distance = round(calc_dist_fixed(userLat, userLon, float(line[1].strip()), float(line[2].strip())), 2)
+              order.insert(i, [distance, location.name, location.zipCode, location.streetAdd1, location.streetAdd2, location.city, location.state, location.phone_number, location.description, location.websiteURL, location.need_set.all, location.hours_set.all])
               conversions.seek(0)
               break
       conversions.close()
-      #listedPantries = listedPantries.order_by("distance")
-    return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'form':form})
+      for r in order:
+        for c in r:
+          print(c,end='')
+        print()
+      order = bubbleSort(order)
+      for r in order:
+        for c in r:
+          print(str(c) + ' ',end='')
+        print()
+        print()
+
+      return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'form':form, 'order':order})
+    else:
+      i = 0
+      order = [[]]
+      for location in listedPantries:
+        order.insert(i, ['N/A', location.name, location.zipCode, location.streetAdd1, location.streetAdd2, location.city, location.state, location.phone_number, location.description, location.websiteURL, location.need_set.all, location.hours_set.all])
+        i += 1
+      return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'form':form, 'order':order})
 
 def add(request):
     return render(request, 'additemspage.html', {})

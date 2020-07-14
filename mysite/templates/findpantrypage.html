@@ -28,37 +28,38 @@
 
 
 <div class="container" style = "float: left;">
-  {% for Pantry in listedPantries %}
+  {#% for Pantry in listedPantries %#}
+  {% for Pantry in order %}
   <div class="row justify-content-start" >
     <div class="col"  style = "background-color: lightgrey;"> 
       <table>
         <tr>
-          <td>{{ Pantry.name }}</td>
+          <td>{{ Pantry.1 }}</td> <!--Name-->
         </tr>
         <tr>
-          <td>{{ Pantry.streetAdd1}}, {{ Pantry.city }}, {{ Pantry.state}} {{Pantry.zipCode}}</td>
+          <td>{{ Pantry.3}}, {{ Pantry.5 }}, {{ Pantry.6}} {{Pantry.4}}</td>   <!--streetAdd1, city, state, zipCode -->
          </tr>
           <tr>
-            <td>{{Pantry.distance}} Miles</td>
+            <td>{{ Pantry.0 }} Miles</td><!--Distance-->
         </tr>
         <tr>
           <td>
-            {{ Pantry.phone_number}}
+            {{ Pantry.7}}<!--Phone_number-->
           </td>
         </tr>
         <tr>
           <td>
-            {{ Pantry.websiteURL}}
+            {{ Pantry.8}}<!--Website-->
           </td>
         </tr>
         <tr>
           <td>
-            {{ Pantry.description}}
+            {{ Pantry.9}}<!--description-->
           </td>
         </tr>
         <tr>
             <td>Needs:</td>
-            {% for need in Pantry.need_set.all %}
+            {% for need in Pantry.10 %} <!--Need Object-->
               <tr><td style="color:red;">
               {{need}}
               <td/></tr>
@@ -66,7 +67,7 @@
         </tr>
         <tr>
           <td>
-            {% for hour in Pantry.hours_set.all %}
+            {% for hour in Pantry.11 %} <!--Hours Object-->
               {{hour}}
             {% endfor %}
           </td>
