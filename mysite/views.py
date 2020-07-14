@@ -46,7 +46,12 @@ def pantries(request):
               print(line)
               line = line.split(",")
               distance = round(calc_dist_fixed(userLat, userLon, float(line[1].strip()), float(line[2].strip())), 2)
-              order.insert(i, [distance, location.name, location.zipCode, location.streetAdd1, location.streetAdd2, location.city, location.state, location.phone_number, location.description, location.websiteURL, location.need_set.all, location.hours_set.all])
+              if i == 0:
+                order[i] = [distance, location.name, location.zipCode, location.streetAdd1, location.streetAdd2, location.city, location.state, location.phone_number, location.description, location.websiteURL, location.need_set.all, location.hours_set.all]
+                i += 1
+              else:
+                order.insert(i, [distance, location.name, location.zipCode, location.streetAdd1, location.streetAdd2, location.city, location.state, location.phone_number, location.description, location.websiteURL, location.need_set.all, location.hours_set.all])
+                i += 1
               conversions.seek(0)
               break
       conversions.close()
