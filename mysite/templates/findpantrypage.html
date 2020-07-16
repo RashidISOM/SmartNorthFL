@@ -13,16 +13,17 @@
       {% for field in form %}
 
       <div class = "form-group row">
-        <label for = "id_{{ field.name }}" class = "col-2 col-form-label"> Zip Code </label>
-        <div class = "col-2">
+        <label for = "id_{{ field.name }}" class = "col-2 col-form-label" style="margin-left: 2em;"> Zip Code: </label>
+
+
+      <div class = "col-2" style="margin-left: -5em;">
           {{ field }}
         </div>
 
       </div>
 
       {% endfor %}
-
-      <button class="btn btn-primary" type="submit">Search</button>
+        <button class="buttonStyle" class="buttonStyle" style="padding: 5px 10px 5px 10px; margin-left: 2em;"type="submit">Search</button>
     </form>
 <br>
 
@@ -40,7 +41,7 @@
           <td>{{ Pantry.3}}, {{ Pantry.5 }}, {{ Pantry.6}} {{Pantry.2}}</td>   <!--streetAdd1, city, state, zipCode -->
          </tr>
           <tr>
-            <td>{{ Pantry.0 }} Miles</td><!--Distance-->
+            <td>Apprx. {{ Pantry.0 }} Miles</td><!--Distance-->
         </tr>
         <tr>
           <td>
@@ -73,7 +74,7 @@
           </td>
         </tr>
       </table>
-      <a class="btn btn-outline-primary my-2 my-sm-0" href = "#">Sign Up For Notifications</a>
+      <a class="btn btn-outline-primary my-2 my-sm-0" onMouseOver="this.style.color='white'; this.style.backgroundColor='#000F5D'" onMouseOut="this.style.color='#000F5D'; this.style.backgroundColor=''"style="color: #000F5D; border-color: #000F5D;" href="#">Sign Up For Notifications</a>
 
     </div>
   </div>
