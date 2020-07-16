@@ -71,7 +71,11 @@ def pantries(request):
       i = 0
       order = [[]]
       for location in listedPantries:
-        order.insert(i, ['N/A', location.name, location.zipCode, location.streetAdd1, location.streetAdd2, location.city, location.state, location.phone_number, location.description, location.websiteURL, location.need_set.all, location.hours_set.all])
+        if i == 0:
+          order[i] = ['N/A', location.name, location.zipCode, location.streetAdd1, location.streetAdd2, location.city, location.state, location.phone_number, location.description, location.websiteURL, location.need_set.all, location.hours_set.all] 
+          i += 1
+        else:
+          order.insert(i, ['N/A', location.name, location.zipCode, location.streetAdd1, location.streetAdd2, location.city, location.state, location.phone_number, location.description, location.websiteURL, location.need_set.all, location.hours_set.all])
         i += 1
       return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'form':form, 'order':order})
 

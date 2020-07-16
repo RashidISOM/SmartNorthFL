@@ -5,13 +5,13 @@
 <!-- This is our html that is custom for this specific page-->
 {% block body %}
     <h1>Inventory</h1>
-    <a class="btn btn-outline-primary my-2 my-sm-0" href = "{% url 'send_mail_form' %}">Send notification to donors</a>
+    <a class="onPageButton" href = "{% url 'send_mail_form' %}">Send notification to donors</a>
     </br></br></br>
-    <a href=  "{% url 'add_food' %}" class="btn btn-outline-primary my-2 my-sm-0" href = "add">Add items</a>
-    <a class="btn btn-outline-primary my-2 my-sm-0" href = "#">Import from excel</a>
-    <a class="btn btn-outline-primary my-2 my-sm-0" href = "#">Export to excel</a>
+    <a href=  "{% url 'add_food' %}" class="onPageButton" href = "add">Add items</a>
+    <a class="onPageButton" href = "#">Import from excel</a>
+    <a class="onPageButton" href = "#">Export to excel</a>
     
-    <a href=  "{% url 'display_food' %}" class = "btn btn-primary btn-md" role="button"> Click to display inventory </a>
+    <a href=  "{% url 'display_food' %}" class = "buttonStyle" role="button"> Click to display inventory </a>
 
     <br><br>
 
