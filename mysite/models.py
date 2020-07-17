@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import RegexValidator
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -21,7 +22,29 @@ class Pantry(models.Model):
     description = models.CharField(max_length = 1000, blank=True)
 
     websiteURL = models.CharField(max_length = 1000, blank=True)
+    
+    account = models.ForeignKey(User, on_delete = models.SET_NULL, null = True)
+    
+    monday_start = models.TimeField(blank=True)
+    monday_end = models.TimeField(blank=True)
 
+    tuesday_start = models.TimeField(blank=True)
+    tuesday_end = models.TimeField(blank=True)
+
+    wednesday_start = models.TimeField(blank=True)
+    wednesday_end = models.TimeField(blank=True)
+
+    thursday_start = models.TimeField(blank=True)
+    thursday_end = models.TimeField(blank=True)
+
+    friday_start = models.TimeField(blank=True)
+    friday_end = models.TimeField(blank=True)
+
+    saturday_start = models.TimeField(blank=True)
+    saturday_end = models.TimeField(blank=True)
+
+    sunday_start = models.TimeField(blank=True)
+    sunday_end = models.TimeField(blank=True)
 
     #users
     #notifiers
