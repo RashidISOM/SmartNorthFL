@@ -65,7 +65,6 @@ def pantries(request):
           print(str(c) + ' ',end='')
         print()
         print()
-
       return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'form':form, 'order':order})
     else:
       i = 0

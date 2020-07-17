@@ -16,7 +16,6 @@ def calc_dist_fixed(lat_a, long_a, lat_b, long_b):
         )
     return acos(cos_x) * EARTH_RADIUS_IN_MILES
 
-# Python program for implementation of Bubble Sort 
 # Shamelessly stolen from https://www.geeksforgeeks.org/python-program-for-bubble-sort/
 def bubbleSort(arr):
     n = len(arr) - 1
@@ -25,7 +24,7 @@ def bubbleSort(arr):
     for i in range(n-1):
     # range(n) also work but outer loop will repeat one time more than needed. 
         # Last i elements are already in place 
-        for j in range(0, n-i-1):
+        for j in range(0, n-i):
             # traverse the array from 0 to n-i-1 
             # Swap if the element found is greater 
             # than the next element 
