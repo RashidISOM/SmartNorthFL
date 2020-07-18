@@ -15,7 +15,9 @@
 
     <br><br>
 
-    <h4>Food Listings</h4>
+    {% for pantry in user.pantry_set.all %}
+
+    <h4>{{pantry.name}} Inventory</h4>
 
     <table class="table table-hover">
         <thead>
@@ -29,7 +31,7 @@
     
     <tbody>
     
-        {% for item in items %}
+        {% for item in pantry.food_set.all %}
     
         <tr>
             <td> {{item.pk}} </td>
@@ -47,5 +49,6 @@
     </tbody>
     
     </table>
+    {% endfor %}
 
 {% endblock %}
