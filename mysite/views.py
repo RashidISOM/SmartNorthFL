@@ -104,10 +104,20 @@ def register(response):
 
 def add_food(request):
     if request.method == "POST":
+        data = request.POST.copy()
         form = FoodForm (request.POST)
+        #print(form.model)
 
         if form.is_valid():
-            form.save()
+            food = Food()
+            food.Name = data.get('Name')
+            food.Status = data.get('Status')
+            food.Amount = data.get('Amount')
+            for pantry in request.user.pantry_set.all():
+              food.Pantry = pantry
+              #just gets first pantry for a user becuase each user should only have one pantry
+              break
+            food.save()
             return redirect('inventory')
     else:
         form = FoodForm()
