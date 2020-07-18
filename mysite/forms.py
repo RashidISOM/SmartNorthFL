@@ -16,7 +16,7 @@ class RegisterForm(UserCreationForm):
 class FoodForm(forms.ModelForm):
     class Meta:
         model = Food
-        fields = ('Name', 'Status', 'Amount', 'Pantry')
+        fields = ('Name', 'Status', 'Amount')
         
 class mailForm(forms.ModelForm):
     class Meta:
