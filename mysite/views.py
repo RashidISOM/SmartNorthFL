@@ -146,25 +146,18 @@ def delete_food(request,pk):
     return render(request, 'inventorypage.html', context)
 
 def send_mail_form(request):
-        if request.method == "POST":
-            form = mailForm (request.POST)
-
-            if form.is_valid():
-                form.save()
-                return redirect('inventory')
-        else:
-            form = mailForm()
-            return render(request, 'send_mail.html', {'form': form})
-
-def send_mail(request):
-    
     users = User.objects.filter(is_active=True).values_list('email', flat=True)
-
-    msg1 = ('subject 1', 'message 1', 'Techpointteam1nonprofit@gmail.com', users )
-    
-    send_mass_mail((msg1,))
-    
-    return render(request, 'inventorypage.html')
+    if request.method == "POST":
+        form = mailForm (request.POST)
+        subject = request.POST.get('Subject')
+        message = request.POST.get('Message')
+        if form.is_valid():
+            msg1 = (subject, message, 'Techpointteam1nonprofit@gmail.com', ['pbelpasso@hotmail.com'] )
+            send_mass_mail((msg1,))         
+            return redirect('inventory')
+    else:
+        form = mailForm()
+        return render(request, 'send_mail.html', {'form': form})
 
 ##def login(request):
   #  return render(request, 'register/login.html', {})
