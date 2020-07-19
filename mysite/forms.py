@@ -27,3 +27,7 @@ class findPantry(forms.ModelForm):
     class Meta:
       model = Location
       fields = ('zipCode',)
+class PantryForm(forms.ModelForm):
+    class Meta:
+        model = Pantry
+        fields = ('name', 'zipCode', 'streetAdd1', 'streetAdd2', 'city', 'state', 'phone_number', 'websiteURL', 'description')
