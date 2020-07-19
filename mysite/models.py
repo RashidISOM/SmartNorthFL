@@ -82,9 +82,10 @@ class Food(models.Model): #name of table
 
 
 class Mail(models.Model):
-    PantryName = models.CharField(max_length=100, blank=False)
     Subject = models.CharField(max_length=100, blank=False)
     Message = models.CharField(max_length=500, blank=False)
+    def __str__(self):
+        return 'Subject : {0} Message : {1}' .format(self.Subject, self.Message)
     
 class Hours(models.Model):
     DAYS = [
