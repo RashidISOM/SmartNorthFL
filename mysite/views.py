@@ -158,6 +158,42 @@ def send_mail_form(request):
     else:
         form = mailForm()
         return render(request, 'send_mail.html', {'form': form})
+    
+def add_pantry(request):
+    if request.method == "POST":
+      form = PantryForm (request.POST)
+      data = request.POST.copy()
+      if form.is_valid():
+        pantry = Pantry()
+        pantry.name = data.get('name')
+        pantry.zipCode = data.get('zipCode')
+        pantry.streetAdd1 = data.get('streetAdd1')
+        pantry.streetAdd2 = data.get('streetAdd2')
+        pantry.city = data.get('city')
+        pantry.state = data.get('state')
+        pantry.phone_number = data.get('phone_number')
+        pantry.websiteURL = data.get('websiteURL')
+        pantry.description = data.get('description')
+        pantry.account = request.user.id
+        pantry.save()
+        return redirect('login')
+    else:
+        form = PantryForm()
+        return render(request, 'addpantry.html', {'form': form})
+
+
+def edit_pantry(request):
+    pantry = get_object_or_404(request.user.pantry_set)
+    if request.method == "POST":
+        form = PantryForm(request.POST, instance=pantry)
+        if form.is_valid():
+            form.save()
+            return redirect('inventory')
+
+    else:
+        form = PantryForm(instance=pantry)
+
+        return render(request, 'editpantry.html', {'form': form})
 
 ##def login(request):
   #  return render(request, 'register/login.html', {})
