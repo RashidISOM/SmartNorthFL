@@ -4,11 +4,55 @@
 
 <!-- This is our html that is custom for this specific page-->
 {% block body %}
-    <h1>Product Name and Welcome</h1>
+<style>
+    .grid-container{
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        grid-gap: 30px 30px;
+        padding: 15px;
+        justify-content: center;
+    }
+    .grid-item{
+        background-color: lightgray;
+        padding:30px;
+        text-align: center;
+    }
+    p{
+        text-align: left;
+    }
 
-    <h5>Who can use this?</h5>
+</style>
+<br><br>
+    <h1 style = "text-align: center;">Welcome to Pantry Pal</h1><br><br>
+    <div class = "grid-container">
+        <div class = "grid-item">
+            <h3>What is Pantry Pal</h3>
+            <p>Anybody can use this website. It can be used by people trying to access free food in their area and need to see what's in stock.
+                 It can be used by people looking for a food pantry to donate to. It can be used by people to keep up to date on their pantry's needs.
+                  Lastly, it can be used by the food pantries themselves to keep and inventory and send notifications.  </p>
+                  <br>
+                  <a href=  "/about/" class = "buttonStyle" role="button"> Find Out More </a>
 
-    <h5>Overview of solution for donors</h5>
+        </div>
+        <div class = "grid-item">
+            <h3>Find a Pantry.</h3>
+            <p>Find a pantry in your area with no need to sign in. Just enter your zipcode and then you can look not just at what the pantries
+                 in your area offer, but what they are in need of as well. 
+                Connect with a pantry in your area and donate. If you sign up for notifications you will be alerted via email when 
+                a pantry is in need of certain products or support as we as any urgent messages. 
+            </p><br>
+            <a href=  "/findpantrypage.html/" class = "buttonStyle" role="button"> Find a Pantry </a>
 
-    <h5>Overview of solution for pantries</h5>
+        </div>
+        <div class = "grid-item">
+            <h3>Join us!</h3>
+            <p>Have details on pricing for pantries and how to join. </p>
+            <br><br><br><br><br><br><br>
+            <a href=  "/register/" class = "buttonStyle" role="button"> Create an Account </a>
+
+        </div>
+
+
+
+    </div>
 {% endblock %}
