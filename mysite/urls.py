@@ -24,4 +24,5 @@ urlpatterns = [
     url (r'^delete_food/(?P<pk>\d+)$', delete_food, name = 'delete_food'),
     url (r'^send_mail_form$', send_mail_form, name = 'send_mail_form'),
     url (r'^sign_up_form$', sign_up_form, name = 'sign_up_form'),
+    url (r'^pantry_inventory/(?P<pantry_id>[0-9]+)$', pantry_inventory, name = 'pantry_inventory'),
 ]
