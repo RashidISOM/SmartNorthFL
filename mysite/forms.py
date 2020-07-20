@@ -32,7 +32,7 @@ class PantryForm(forms.ModelForm):
         model = Pantry
         fields = ('name', 'zipCode', 'streetAdd1', 'streetAdd2', 'city', 'state', 'phone_number', 'websiteURL', 'description')
 
-class signUp(forms.ModelForm):
+class donorForm(forms.ModelForm):
     class Meta:
         model = Donor
-        fields = ('email',)
+        fields = ('name', 'pantry', 'email')
