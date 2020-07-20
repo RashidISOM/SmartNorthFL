@@ -198,6 +198,15 @@ def edit_pantry(request):
 def about(request):
     return render(request, 'about.html', {})
 
+def sign_up_form(request):
+    if request.method == "POST":
+      form = sign_up_form(request.POST)
+      if form.is_valid():
+        return render(request,'findpantrypage.html')
+    else:
+        
+        return render(request,'donor_sign_up.html')
+
 ##def login(request):
   #  return render(request, 'register/login.html', {})
 
