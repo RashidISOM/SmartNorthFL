@@ -195,6 +195,9 @@ def edit_pantry(request):
 
         return render(request, 'editpantry.html', {'form': form})
 
+def about(request):
+    return render(request, 'about.html', {})
+
 ##def login(request):
   #  return render(request, 'register/login.html', {})
 

@@ -1,0 +1,48 @@
+<!-- This imports the base.html for the naviagation bar-->
+{% extends 'base.html' %}
+
+
+<!-- This is our html that is custom for this specific page-->
+{% block body %}
+<style>
+    .grid-container{
+        display: grid;
+        grid-template-columns: 40% 40%;
+        grid-gap: 30px 30px;
+        padding: 15px;
+        justify-content: center;
+    }
+    .grid-item{
+        background-color: lightgray;
+        padding:30px;
+        text-align: center;
+        border-radius: 15px;
+    }
+    p{
+        text-align: left;
+    }
+
+</style>
+<br><br>
+    <h1 style = "text-align: center;">About Us</h1><br><br>
+    <div class = "grid-container">
+        <div class = "grid-item">
+            <h3>How We Did It</h3>
+            <p> This project is the result of a five week comptetition sponsered by Techpoint. We were tasked with developing a tool to help non-profits in Indiana during the current pandemic. We reached out to food banks in our state to determine what problems they anticipate moving forward and found that many pantries were not taking advantage of the technology avalible to them. We began listing features that we thought would help local food banks connect and stay organized with the public. From there we sketched out what we wanted the website to look like and began our process of development, testing, and reiteration. Now we are proud to present our solution for Indiana non-profits!
+            </p><br>
+
+    </div>
+    <div class = "grid-item">
+            <h3>The Team</h3>
+            <p>
+Arvind Krishnan -<br>
+Julia Giddens - Sophomore in Environmental and Ecological Engineering at Purdue<br>
+Philip Belpasso - Senior in Computer Information Systems at Ball State University<br>
+Sam Vonderahe -  Junior in Computer Science at Purdue<br>
+Louis Labuzienski - Junior in Computer Science at Indiana University Bloomington<br>
+<br>
+We would also like to thank our awesome coaches for helping us along the way and Techpoint for making all of this possible.</p><br>
+
+    </div>
+
+{% endblock %}

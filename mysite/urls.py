@@ -15,6 +15,7 @@ urlpatterns = [
     path('pantries/', views.pantries, name= 'pantries'),
     path('add/', views.add, name= 'add'),
     path('remove/', views.remove, name= 'remove'),
+    path('about/', views.about, name='about'),
     url (r'^add_pantry$', add_pantry, name = 'add_pantry'),
     url (r'^edit_pantry/$', edit_pantry, name = 'edit_pantry'),
     url (r'^display_food$', display_food, name = 'display_food'),
