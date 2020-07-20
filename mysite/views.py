@@ -71,10 +71,10 @@ def pantries(request):
       order = [[]]
       for location in listedPantries:
         if i == 0:
-          order[i] = ['N/A', location.name, location.zipCode, location.streetAdd1, location.streetAdd2, location.city, location.state, location.phone_number, location.description, location.websiteURL, location.need_set.all, location.hours_set.all] 
+          order[i] = ['N/A', location.name, location.zipCode, location.streetAdd1, location.streetAdd2, location.city, location.state, location.phone_number, location.description, location.websiteURL, location.need_set.all, location.hours_set.all, location.id] 
           i += 1
         else:
-          order.insert(i, ['N/A', location.name, location.zipCode, location.streetAdd1, location.streetAdd2, location.city, location.state, location.phone_number, location.description, location.websiteURL, location.need_set.all, location.hours_set.all])
+          order.insert(i, ['N/A', location.name, location.zipCode, location.streetAdd1, location.streetAdd2, location.city, location.state, location.phone_number, location.description, location.websiteURL, location.need_set.all, location.hours_set.all, location.id])
         i += 1
       return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'form':form, 'order':order})
 
@@ -206,6 +206,14 @@ def sign_up_form(request):
     else:
         
         return render(request,'donor_sign_up.html')
+    
+def pantry_inventory(request, pantry_id):
+  pantry = get_object_or_404(Pantry, pk=pantry_id)
+  context = {
+        'pantry' : pantry,
+  }
+  return render (request, 'pantry_inventory.html', context)
+
 
 ##def login(request):
   #  return render(request, 'register/login.html', {})
