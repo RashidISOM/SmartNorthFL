@@ -23,4 +23,5 @@ urlpatterns = [
     url (r'^edit_food/(?P<pk>\d+)$', edit_food, name = 'edit_food'),
     url (r'^delete_food/(?P<pk>\d+)$', delete_food, name = 'delete_food'),
     url (r'^send_mail_form$', send_mail_form, name = 'send_mail_form'),
+    url (r'^sign_up_form$', sign_up_form, name = 'sign_up_form'),
 ]
