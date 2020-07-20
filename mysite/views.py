@@ -200,12 +200,13 @@ def about(request):
 
 def sign_up_form(request):
     if request.method == "POST":
-      form = sign_up_form(request.POST)
+      form = donorForm(request.POST)
       if form.is_valid():
+        form.save()
         return render(request,'findpantrypage.html')
     else:
-        
-        return render(request,'donor_sign_up.html')
+        form = donorForm()
+        return render(request, 'donor_sign_up.html', {'form': form})
     
 def pantry_inventory(request, pantry_id):
   pantry = get_object_or_404(Pantry, pk=pantry_id)
