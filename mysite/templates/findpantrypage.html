@@ -50,21 +50,23 @@
         </tr>
         <tr>
           <td>
-            {{ Pantry.8}}<!--Website-->
+            <a href = "{{Pantry.9}}" target="_blank">{{ Pantry.9}}</a><!--Website-->
           </td>
         </tr>
         <tr>
           <td>
-            {{ Pantry.9}}<!--description-->
+            {{ Pantry.8}}<!--description-->
           </td>
         </tr>
         <tr>
+            {% if Pantry.10.count > 0%}
             <td>Needs:</td>
             {% for need in Pantry.10 %} <!--Need Object-->
               <tr><td style="color:red;">
               {{need}}
-              <td/></tr>
+              </td></tr>
             {% endfor %}
+            {% endif%}
         </tr>
         <tr>
           <td>
