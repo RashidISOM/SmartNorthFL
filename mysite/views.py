@@ -215,6 +215,75 @@ def pantry_inventory(request, pantry_id):
   }
   return render (request, 'pantry_inventory.html', context)
 
+def add_hours(request):
+    if request.method == "POST":
+        data = request.POST.copy()
+        form = HoursForm (request.POST)
+        if form.is_valid():
+            hours = Hours()
+            hours.weekday = data.get('weekday')
+            hours.from_hour = data.get('from_hour')
+            hours.to_hour = data.get('to_hour')
+            for pantry in request.user.pantry_set.all():
+              hours.pantry = pantry
+              #just gets first pantry for a user becuase each user should only have one pantry
+              break
+            hours.save()
+        return redirect('edit_pantry')
+    else:
+      form = HoursForm()
+      return render(request, 'add_hours.html', {'form': form})
+
+def edit_hours(request, pk):
+    hours = get_object_or_404(Hours, pk=pk)
+
+    if request.method == "POST":
+        form = HoursForm(request.POST, instance=hours)
+        if form.is_valid():
+            form.save()
+            return redirect('edit_pantry')
+
+    else:
+        form = HoursForm(instance=hours)
+
+        return render(request, 'edit_hours.html', {'form': form})
+    
+def delete_hours(request,pk):
+    Hours.objects.filter(id=pk).delete()
+    items = Hours.objects.all()
+    context = {
+        'items':items
+    }
+    return render(request, 'editpantry.html', context)
+
+
+def add_need(request):
+    if request.method == "POST":
+        data = request.POST.copy()
+        form = NeedForm (request.POST)
+        if form.is_valid():
+            need = Need()
+            need.itemName = data.get('itemName')
+            for pantry in request.user.pantry_set.all():
+              need.pantry = pantry
+              #just gets first pantry for a user becuase each user should only have one pantry
+              break
+            need.save()
+        return redirect('edit_pantry')
+    else:
+      form = NeedForm()
+      return render(request, 'add_need.html', {'form': form})
+
+    
+def delete_need(request,pk):
+    Need.objects.filter(id=pk).delete()
+    items = Need.objects.all()
+    context = {
+        'items':items
+    }
+    return render(request, 'editpantry.html', context)
+
+
 
 ##def login(request):
   #  return render(request, 'register/login.html', {})
