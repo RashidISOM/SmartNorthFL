@@ -15,6 +15,7 @@ from django.http import HttpResponse
 
 
 # Create your views here.
+# Use this to pass information to the page you are sending to the client
 def mainpage(request):
     return render(request, 'mainpage.html', {})
 
@@ -43,7 +44,6 @@ def pantries(request):
         for location in listedPantries:
           for line in conversions:
             if re.search('^' + location.getZipCode() + '[,]+[^\n]*$', line):
-              print(line)
               line = line.split(",")
               distance = round(calc_dist_fixed(userLat, userLon, float(line[1].strip()), float(line[2].strip())), 2)
               if i == 0:
@@ -55,17 +55,8 @@ def pantries(request):
               conversions.seek(0)
               break
       conversions.close()
-      for r in order:
-        for c in r:
-          print(c,end='')
-        print()
-      order = bubbleSort(order)
-      for r in order:
-        for c in r:
-          print(str(c) + ' ',end='')
-        print()
-        print()
-      return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'form':form, 'order':order})
+      order = bubbleSort(order) #Pass list over to bubbleSort in calc.py to sort by distance
+      return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'form':form, 'order':order}) #Pass in all pantries as well as zip code and order if available
     else:
       i = 0
       order = [[]]
@@ -76,7 +67,7 @@ def pantries(request):
         else:
           order.insert(i, ['N/A', location.name, location.zipCode, location.streetAdd1, location.streetAdd2, location.city, location.state, location.phone_number, location.description, location.websiteURL, location.need_set.all, location.hours_set.all, location.id])
         i += 1
-      return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'form':form, 'order':order})
+      return render(request, 'findpantrypage.html', {'listedPantries':listedPantries, 'form':form, 'order':order}) #Pass in all pantries as well as zip code and order if available
 
 def add(request):
     return render(request, 'additemspage.html', {})

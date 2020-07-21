@@ -4,7 +4,7 @@ from mysite import views
 from django.contrib.auth.views import LoginView, LogoutView
 from .views import *
 
-
+# Links button addresses to django views
 
 urlpatterns = [
     path('', views.mainpage, name='mainpage'),
