@@ -108,14 +108,15 @@ class Hours(models.Model):
     ]
     #https://stackoverflow.com/questions/12216771/django-objects-for-business-hours
     weekday = models.IntegerField(
-        choices=DAYS,
-        unique=True
+        choices=DAYS
     )
+    
     from_hour = models.TimeField()
     to_hour = models.TimeField()
     pantry = models.ForeignKey(Pantry, on_delete = models.CASCADE)
+    
     def __str__(self):
-        return '{0}: From {1} - {2}' .format(self.dayNames[self.weekday], self.from_hour, self.to_hour)
+        return '{0}: From {1} - {2}' .format(self.dayNames[self.weekday-1], self.from_hour.strftime("%I:%M %p"), self.to_hour.strftime("%I:%M %p"))
 
 
 class Need(models.Model):
