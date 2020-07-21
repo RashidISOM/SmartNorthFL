@@ -25,4 +25,9 @@ urlpatterns = [
     url (r'^send_mail_form$', send_mail_form, name = 'send_mail_form'),
     url (r'^sign_up_form$', sign_up_form, name = 'sign_up_form'),
     url (r'^pantry_inventory/(?P<pantry_id>[0-9]+)$', pantry_inventory, name = 'pantry_inventory'),
+    url (r'^add_hours$', add_hours, name = 'add_hours'),
+    url (r'^edit_hours/(?P<pk>\d+)$', edit_hours, name = 'edit_hours'),
+    url (r'^delete_hours/(?P<pk>\d+)$', delete_hours, name = 'delete_hours'),
+    url (r'^add_need$', add_need, name = 'add_need'),
+    url (r'^delete_need/(?P<pk>\d+)$', delete_need, name = 'delete_need'),
 ]
