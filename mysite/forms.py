@@ -18,10 +18,9 @@ class FoodForm(forms.ModelForm):
         model = Food
         fields = ('Name', 'Status', 'Amount')
         
-class mailForm(forms.ModelForm):
-    class Meta:
-        model = Mail 
-        fields = ('Subject', 'Message')
+class mailForm(forms.Form):
+    Subject = forms.CharField()
+    Message =forms.CharField(widget=forms.Textarea)
 
 class findPantry(forms.ModelForm):
     class Meta:
