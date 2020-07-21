@@ -205,7 +205,7 @@ def sign_up_form(request):
       form = donorForm(request.POST)
       if form.is_valid():
         form.save()
-        return render(request,'findpantrypage.html')
+        return redirect('pantries')
     else:
         form = donorForm()
         return render(request, 'donor_sign_up.html', {'form': form})
