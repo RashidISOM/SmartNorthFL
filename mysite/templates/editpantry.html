@@ -6,7 +6,7 @@
 {% block body %}
     <h1>Pantry</h1>
     <br>
-    <h3>Edit Pantry</h3>
+    <h3>Edit Pantry Details</h3>
 
     <div class = "containter">
 
@@ -25,9 +25,90 @@
 
       {% endfor %}
 
-      <button type = "submit" class ="buttonStyle" style="padding: 5px 10px 5px 10px; name = "button"> Edit Pantry </button>
+      <button type = "submit" class ="buttonStyle" style="padding: 5px 10px 5px 10px;" name = "button"> Edit Pantry </button>
     
     </form>
+
+  </div>
+  <br><br><br>
+
+
+
+  <h3>Edit Pantry Needs</h3>
+  <br>
+    <a href=  "{% url 'add_need' %}" class="onPageButton" >Add Pantry Need</a>
+    <br><br><br>
+
+    <div class = "containter">
+    {% for pantry in user.pantry_set.all %}
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Needs</th>
+            </tr>
+        </thead>
+    
+    <tbody>
+    
+        {% for item in pantry.need_set.all %}
+    
+        <tr>
+            <td> {{item}} </td>
+            <td>
+                <a href="{% url  'delete_need' item.pk %}" class = "btn btn-danger btn-sm" role="button"> Delete </a>
+            </td>
+        </tr>
+    
+        {% endfor %}
+    
+    </tbody>
+    
+    </table>
+    {% endfor %}
+   
+
+  </div>
+
+<br><br>
+
+
+  <h3>Edit Pantry Hours</h3>
+  <br>
+    <a href=  "{% url 'add_hours' %}" class="onPageButton" href = "add">Add Busines Hours</a>
+    <br><br><br>
+
+    <div class = "containter">
+    {% for pantry in user.pantry_set.all %}
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Hours</th>
+            </tr>
+        </thead>
+    
+    <tbody>
+    
+        {% for item in pantry.hours_set.all %}
+    
+        <tr>
+            <td> {{item}} </td>
+            <td>
+                <a href="{% url  'edit_hours' item.pk %}" class = "btn btn-warning btn-sm" role="button"> Edit </a>
+                <a href="{% url  'delete_hours' item.pk %}" class = "btn btn-danger btn-sm" role="button"> Delete </a>
+            </td>
+        </tr>
+    
+        {% endfor %}
+    
+    </tbody>
+    
+    </table>
+    {% endfor %}
+   
 
   </div>
 
