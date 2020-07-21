@@ -36,3 +36,23 @@ class donorForm(forms.ModelForm):
     class Meta:
         model = Donor
         fields = ('name', 'pantry', 'email')
+class TimeInput(forms.TimeInput):
+    input_type = "time"
+
+class HoursForm(forms.ModelForm):
+    class Meta:
+        model = Hours
+        fields = ('weekday', 'from_hour', 'to_hour')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["from_hour"].widget = TimeInput()
+        self.fields["to_hour"].widget = TimeInput()
+        self.fields["weekday"]
+class NeedForm(forms.ModelForm):
+    class Meta:
+        model = Need
+        fields = ('itemName',)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['itemName'].label = "Item Name"
