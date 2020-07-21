@@ -146,13 +146,15 @@ def delete_food(request,pk):
     return render(request, 'inventorypage.html', context)
 
 def send_mail_form(request):
-    users = User.objects.filter(is_active=True).values_list('email', flat=True)
+    users = Donor.objects.values_list('email', flat=True)
+    
+    
     if request.method == "POST":
         form = mailForm (request.POST)
         subject = request.POST.get('Subject')
         message = request.POST.get('Message')
         if form.is_valid():
-            msg1 = (subject, message, 'Techpointteam1nonprofit@gmail.com', ['pbelpasso@hotmail.com'] )
+            msg1 = (subject, message, 'pantrypalindiana@gmail.com', users )
             send_mass_mail((msg1,))         
             return redirect('inventory')
     else:
