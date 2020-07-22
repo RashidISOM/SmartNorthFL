@@ -20,7 +20,7 @@ We are going to create a new machine named newenv
 Start the machine with  
 `source newenv/bin/activate`  
 Next we need to install our packages onto the newenv machine  
-`pip3 install django django-crispy-forms django-filter mysqlclient`  
+`pip3 install django django-crispy-forms django-filter pylint-django mysqlclient`  
 Now cd into the TechpointSOS directory and run the following command to start the server  
 `python manage.py runserver`  
 You can now access the website at `http://127.0.0.1:8000/`  
