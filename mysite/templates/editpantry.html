@@ -6,9 +6,9 @@
 {% block body %}
     <h1>Pantry</h1>
     <br>
+    <div class = "container" style = "float: left;">
     <h3>Edit Pantry Details</h3>
-
-    <div class = "container">
+    
 
     <form method="POST">
       <br>
@@ -25,11 +25,11 @@
 
       {% endfor %}
 
-      <button type = "submit" class ="buttonStyle" style="padding: 5px 10px 5px 10px;" name = "button"> Edit Pantry </button>
+      <button type = "submit" class ="buttonStyle" style="padding: 5px 10px 5px 10px;" name = "button"> Submit Changes </button>
     
     </form>
 
-  </div>
+  
   <br><br><br>
 
 
@@ -39,7 +39,7 @@
     <a href=  "{% url 'add_need' %}" class="onPageButton" >Add Pantry Need</a>
     <br><br><br>
 
-    <div class = "container">
+
     {% for pantry in user.pantry_set.all %}
 
 
@@ -69,7 +69,6 @@
     {% endfor %}
    
 
-  </div>
 
 <br><br>
 
@@ -79,7 +78,7 @@
     <a href=  "{% url 'add_hours' %}" class="onPageButton" href = "add">Add Business Hours</a>
     <br><br><br>
 
-    <div class = "container">
+
     {% for pantry in user.pantry_set.all %}
 
 
@@ -113,3 +112,4 @@
   </div>
 
 {% endblock %}
+
