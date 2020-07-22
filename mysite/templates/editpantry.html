@@ -8,7 +8,7 @@
     <br>
     <h3>Edit Pantry Details</h3>
 
-    <div class = "containter">
+    <div class = "container">
 
     <form method="POST">
       <br>
@@ -39,7 +39,7 @@
     <a href=  "{% url 'add_need' %}" class="onPageButton" >Add Pantry Need</a>
     <br><br><br>
 
-    <div class = "containter">
+    <div class = "container">
     {% for pantry in user.pantry_set.all %}
 
 
@@ -79,7 +79,7 @@
     <a href=  "{% url 'add_hours' %}" class="onPageButton" href = "add">Add Business Hours</a>
     <br><br><br>
 
-    <div class = "containter">
+    <div class = "container">
     {% for pantry in user.pantry_set.all %}
 
 
