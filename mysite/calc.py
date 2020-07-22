@@ -19,9 +19,8 @@ def calc_dist_fixed(lat_a, long_a, lat_b, long_b):
 # Shamelessly stolen from https://www.geeksforgeeks.org/python-program-for-bubble-sort/
 def bubbleSort(arr):
     n = len(arr) - 1
-
     # Traverse through all array elements 
-    for i in range(n-1):
+    for i in range(0, n):
     # range(n) also work but outer loop will repeat one time more than needed. 
         # Last i elements are already in place 
         for j in range(0, n-i):
@@ -30,6 +29,5 @@ def bubbleSort(arr):
             # than the next element 
             if arr[j][0] > arr[j+1][0] :
                 arr[j], arr[j+1] = arr[j+1], arr[j]
-
     return arr
 
