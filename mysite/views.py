@@ -11,6 +11,7 @@ from .calc import *
 from .forms import *
 from django.core.mail import send_mass_mail
 from django.http import HttpResponse
+from django.contrib.auth import authenticate, login
 
 
 
@@ -87,10 +88,11 @@ def register(response):
       form = RegisterForm(response.POST)
       if form.is_valid():
         form.save()
-      return redirect("add_pantry")
+        form = authenticate(username=form.cleaned_data['username'],password=form.cleaned_data['password1'],)
+        login(response, form)
+        return redirect("add_pantry")
    else:
       form = RegisterForm()
-
    return render(response, "register/register.html", {"form":form})
 
 def add_food(request):
@@ -171,9 +173,9 @@ def add_pantry(request):
         pantry.phone_number = data.get('phone_number')
         pantry.websiteURL = data.get('websiteURL')
         pantry.description = data.get('description')
-        pantry.account = request.user.id
+        pantry.account = request.user
         pantry.save()
-        return redirect('login')
+        return redirect('edit_pantry')
     else:
         form = PantryForm()
         return render(request, 'addpantry.html', {'form': form})
