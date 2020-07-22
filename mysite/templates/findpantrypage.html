@@ -4,45 +4,53 @@
 
 <!-- This is our html that is custom for this specific page-->
 {% block body %}
-    <h1>Find a Pantry</h1>
 
-    <!-- form to be replaced with django form once model is implemented -->
-    <form method="get">
-      <br>
-      {% csrf_token %}
-      {% for field in form %}
 
+<style>
+  .address{
+    font-size: 14pt;
+  }
+  a{
+    color: #0021c4;
+  }
+
+</style>
+<div class = "container" style = "float: left;">
+  <h1>Find a Pantry</h1>
+  <form method="get">
+    <br>
+    {% csrf_token %}
+    {% for field in form %}
       <div class = "form-group row">
-        <label for = "id_{{ field.name }}" class = "col-2 col-form-label" style="margin-left: 2em;"> Zip Code: </label>
-
-
-      <div class = "col-2" style="margin-left: -5em;">
+        <label for = "id_{{ field.name }}" class = "col-2 col-form-label" "> Zip Code: </label>
+        <div class = "col-2" style="margin-left: -6em;">
           {{ field }}
         </div>
-
       </div>
+    {% endfor %}
+    <button class="buttonStyle" class="buttonStyle" style="padding: 5px 10px 5px 10px; "type="submit">Search</button>
 
-      {% endfor %}
-        <button class="buttonStyle" class="buttonStyle" style="padding: 5px 10px 5px 10px; margin-left: 2em;"type="submit">Search</button>
-    </form>
-<br>
+    
+  </form>
+  <br>
 
 
-<div class="container" style = "float: left;">
-  {#% for Pantry in listedPantries %#}
+  <div class="container" style = "float: left;">
   {% for Pantry in order %}
   <div class="row justify-content-start" >
-    <div class="col"  style = "background-color: lightgrey;"> 
+    <div class="col"  style = "background-color: lightgrey; border-radius: 3px; padding-bottom: 10px;"> 
       <table>
         <tr>
-          <td>{{ Pantry.1 }}</td> <!--Name-->
+          <td><h3>{{ Pantry.1 }}</h3></td> <!--Name-->
         </tr>
         <tr>
-          <td>{{ Pantry.3}}, {{ Pantry.5 }}, {{ Pantry.6}} {{Pantry.2}}</td>   <!--streetAdd1, city, state, zipCode -->
+          <td><div class = "address">{{ Pantry.3}}, {{ Pantry.5 }}, {{ Pantry.6}} {{Pantry.2}}</div></td>   <!--streetAdd1, city, state, zipCode -->
          </tr>
+        {% if Pantry.0 != "N/A" %}
           <tr>
             <td>Apprx. {{ Pantry.0 }} Miles</td><!--Distance-->
-        </tr>
+          </tr>
+        {% endif %}
         <tr>
           <td>
             {{ Pantry.7}}<!--Phone_number-->
@@ -59,31 +67,38 @@
           </td>
         </tr>
         <tr>
-            {% if Pantry.10.count > 0%}
-            <td>Needs:</td>
-            {% for need in Pantry.10 %} <!--Need Object-->
-              <tr><td style="color:red;">
-              {{need}}
-              </td></tr>
-            {% endfor %}
-            {% endif%}
-        </tr>
-        <tr>
           <td>
             {% for hour in Pantry.11 %} <!--Hours Object-->
               {{hour}}<br>
             {% endfor %}
           </td>
         </tr>
+        <tr>
+          {% if Pantry.10.count > 0%}
+          <td>Needs:</td>
+        </tr>
+          <tr>
+            <td>
+            <ul>
+            {% for need in Pantry.10 %} <!--Need Object-->
+              <li>{{need}}</li>
+            {% endfor %}
+            </ul>
+            </td>
+          {% endif%}
+          </tr>
+        
       </table>
       <a href=  "{% url 'sign_up_form' %}" class="btn btn-outline-primary my-2 my-sm-0" onMouseOver="this.style.color='white'; this.style.backgroundColor='#000F5D'" onMouseOut="this.style.color='#000F5D'; this.style.backgroundColor=''"style="color: #000F5D; border-color: #000F5D;" href="#">Sign Up For Notifications</a>
       <a href=  "{% url 'pantry_inventory' Pantry.12 %}" class="btn btn-outline-primary my-2 my-sm-0" onMouseOver="this.style.color='white'; this.style.backgroundColor='#000F5D'" onMouseOut="this.style.color='#000F5D'; this.style.backgroundColor=''"style="color: #000F5D; border-color: #000F5D;" href="#">View Inventory</a>
+      </div>
     </div>
+    <br>
+    {% endfor %}
   </div>
-  <br>
-  {% endfor %}
 </div>
 
 
 
 {% endblock %}
+
