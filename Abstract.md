@@ -1,8 +1,8 @@
-﻿Pantry Pal
-Community Based Nonprofits- Team 1
+#Pantry Pal
+##Community Based Nonprofits- Team 1
 
 
-Overview
+###Overview
 In the nonprofit community, our team had heard about recent increased use of food pantries. During a global pandemic, the last thing a family needs to worry about is where their next meal is coming from. Our team found that what many food pantries lack is structure and organization. This was leading to lack of communication and ultimately hindering the ability of food pantries to reach people in need. We decided to create an inventory system that would be easy for a food pantry to use and keep track of what items they receive and what is in shortage. But what good is this information if it is not getting to the people who have the ability to change it. We expanded our solution to allow food pantries to reach out to donors, communicating what items they need and how they can help. Now pantries can communicate their inventory needs with donors and serve more people in the community.
 Team Members
 
