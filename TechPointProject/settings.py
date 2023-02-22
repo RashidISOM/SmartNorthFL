@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'TechPointProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '35.224.233.128',
-        'NAME': 'infoodbanks',
-        'USER': 'root',
-        'PASSWORD': 'Team1FB1845',
+        'HOST': 'RashidISOM.mysql.pythonanywhere-services.com',
+        'NAME': 'RashidISOM$default',
+        'USER': 'RashidISOM',
+        'PASSWORD': 'SUIYHG78tfds%ghfjks78t8$7sef',
 
     }
 }
@@ -134,9 +134,9 @@ LOGIN_REDIRECT_URL = '/inventory'
 LOGOUT_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'pantrypalindiana@gmail.com'
-EMAIL_HOST_PASSWORD = 'Thx4TheXP178'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
