@@ -1,4 +1,4 @@
-from django.urls import path re_path
+from django.urls import path, re_path
 from django.conf.urls import include, re_path
 from mysite import views
 from django.contrib.auth.views import LoginView, LogoutView
